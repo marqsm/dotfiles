@@ -1,0 +1,42 @@
+[user]
+	name = Marcus Malka
+	email = marcus.malka@sujuwa.fi
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+        tool = Kaleidoscope
+        renames = true
+        mnemonicprefix = true
+[core]
+	excludesfile = /Users/marcusmalka/.gitignore_global
+        # editor = subl -n -w
+        editor = /usr/bin/nano
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = true
+[http]
+        sslCAInfo=~/.ssh/virtualalpha.pem
+[branch]
+        autosetuprebase = always
+[color]
+	ui = auto
+[alias]
+	unstage = reset HEAD
+	tree = log --graph --all --decorate --pretty=oneline --abbrev-commit
+        logt = git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+        lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %C(bold blue)%aN %Cgreen(%ar)%Creset%n%s%n' --abbrev-commit --date=relative --stat=72
+        st = status -sb
+        aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+[push]
+	default = simple
+[credential]
+        helper = osxkeychain
+[help]
+	autocorrect = 1
